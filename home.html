@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="pos.css">
+ 
+</head>
+<body>
+    <div>
+        <div>
+            <div class="sidebar">
+                <div class="logo">
+                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/03/d6/54/03d65454-5450-ac3b-3756-59f376abe9f5/AppIcon-0-0-1x_U007ephone-0-85-220.png/246x0w.webp" alt="Logo">
+                </div>
+                <ul class="sidebar-nav">
+                    <li><i class="fa-solid fa-chart-pie"></i></li>
+                    <li><i class="fa-solid fa-table-columns"></i></li>
+                    <li><i class="fa-solid fa-user"></i></li>
+                    <li><i class="fa-solid fa-cube"></i></li>
+                    <li><i class="fa-solid fa-bag-shopping"></i></li>
+                    <li><i class="fa-regular fa-file-lines"></i></li>
+                    <li><i class="fas fa-cog"></i></li>
+                </ul>
+                <div class="logo">
+                    <img style="margin-top:50px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWd2Er6aGk46GpGePsuN9SgkYasGWZfc0L2jtrg4dSenLmtdD7kcWxTKaG0qp1osENax4&usqp=CAU" alt="logo"/>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand navbar-light">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="#">Top Order</a>
+                    <a class="nav-item nav-link" href="#">Ongoing</a>
+                    <a class="nav-item nav-link" href="#">Table View</a>
+                    <a class="nav-item nav-link" href="#">Pay Later</a>
+                </div>
+            </nav>
+        </div>
+        <div class="d-flex">
+        <div class="container card ml-6">
+            <div class="header">
+                <h2>Ongoing Orders</h2>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="form" placeholder="search foods, drinks, etc.">
+            </div>
+            <div class="nav-options">
+                <a href="#" class="nav-option active" onclick="filterOrders('all')">All</a>
+                <a href="#" class="nav-option" onclick="filterOrders('dinein')">Dine in</a>
+                <a href="#" class="nav-option" onclick="filterOrders('togo')">To go</a>
+                <a href="#" class="nav-option" onclick="filterOrders('delivery')">Delivery</a>
+            </div>
+            <hr style="margin-top: 0;">
+            <div class="orders">
+                <div class="order-card" data-status="dinein">
+                    <div class="order-header d-flex justify-content-between">
+                        <span>Table No. 2A</span>
+                        <span>#12345</span>
+                    </div>
+                    <div class="order-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Name: Kevin Dukkon</p>
+                            <p>$1000</p>
+                        </div>
+                        <div class="buttons d-flex justify-content-between">
+                            <button class="btn" style="background-color: #5d4ce0; color: white;">Pay</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;">Pay later</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-times"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-print"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <hr style="border-top: 1px dashed green;">
+                        <div class="status d-flex justify-content-between mt-2" style="background-color: #f0fcf7;">
+                            <span class="text-success">Dine in</span>
+                            <span class="text-muted"><i class="fas fa-clock"></i> 15 mins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-card" data-status="togo">
+                    <div class="order-header d-flex justify-content-between">
+                        <span>Table No. 3B</span>
+                        <span>#12346</span>
+                    </div>
+                    <div class="order-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Name: John Doe</p>
+                            <p>$1200</p>
+                        </div>
+                        <div class="buttons d-flex justify-content-between">
+                            <button class="btn" style="background-color: #5d4ce0; color: white;">Pay</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;">Pay later</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-times"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-print"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <hr style="border-top: 1px dashed red;">
+                        <div class="status d-flex justify-content-between mt-2" style="background-color: #fdf3f5;">
+                            <span class="text-danger">To go</span>
+                            <span class="text-muted"><i class="fas fa-clock"></i> 10 mins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-card" data-status="delivery">
+                    <div class="order-header d-flex justify-content-between">
+                        <span>Table No. 2A</span>
+                        <span>#12345</span>
+                    </div>
+                    <div class="order-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Name: Kevin Dukkon</p>
+                            <p>$1000</p>
+                        </div>
+                        <div class="buttons d-flex justify-content-between">
+                            <button class="btn" style="background-color: #5d4ce0; color: white;">Pay</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;">Pay later</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-times"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-print"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <hr style="border-top: 1px dashed orange;">
+                        <div class="status d-flex justify-content-between mt-2" style="background-color: #f0fcf7;">
+                            <span style="color: orange;">Delivery</span>
+                            <span class="text-muted"><i class="fas fa-clock"></i> 15 mins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-card" data-status="dinein">
+                    <div class="order-header d-flex justify-content-between">
+                        <span>Table No. 3B</span>
+                        <span>#12346</span>
+                    </div>
+                    <div class="order-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Name: John Doe</p>
+                            <p>$1200</p>
+                        </div>
+                        <div class="buttons d-flex justify-content-between">
+                            <button class="btn" style="background-color: #5d4ce0; color: white;">pay</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;">Pay later</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-times"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-print"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <hr style="border-top: 1px dashed green;">
+                        <div class="status d-flex justify-content-between mt-2" style="background-color: #fdf3f5;">
+                            <span class="text-success">Dine in</span>
+                            <span class="text-muted"><i class="fas fa-clock"></i> 10 mins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-card" data-status="togo">
+                    <div class="order-header d-flex justify-content-between">
+                        <span>Table No. 2A</span>
+                        <span>#12345</span>
+                    </div>
+                    <div class="order-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Name: Kevin Dukkon</p>
+                            <p>$1000</p>
+                        </div>
+                        <div class="buttons d-flex justify-content-between">
+                            <button class="btn" style="background-color: #5d4ce0; color: white;">Pay</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;">Pay later</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-times"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-print"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <hr style="border-top: 1px dashed red;">
+                        <div class="status d-flex justify-content-between mt-2" style="background-color: #f0fcf7;">
+                            <span class="text-danger">To go</span>
+                            <span class="text-muted"><i class="fas fa-clock"></i> 15 mins</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-card" data-status="delivery">
+                    <div class="order-header d-flex justify-content-between">
+                        <span>Table No. 3B</span>
+                        <span>#12346</span>
+                    </div>
+                    <div class="order-body">
+                        <div class="d-flex justify-content-between">
+                            <p>Name: John Doe</p>
+                            <p>$1200</p>
+                        </div>
+                        <div class="buttons d-flex justify-content-between">
+                            <button class="btn" style="background-color: #5d4ce0; color: white;">Pay</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;">Pay later</button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-times"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-print"></i></button>
+                            <button class="btn" style="background-color: #f4f7fe; color: gray;"><i class="fas fa-edit"></i></button>
+                        </div>
+                        <hr style="border-top: 1px dashed orange;">
+                        <div class="status d-flex justify-content-between mt-2" style="background-color: #f0fcf7;">
+                            <span style="color: orange;">Delivery</span>
+                            <span class="text-muted"><i class="fas fa-clock"></i> 15 mins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card right-side-card">
+            <div class="card-header">
+                <h5 >Table No</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-info">
+                    <p>Name <br><span style="margin-top: 2px; color: #5d4ce0; font-size: 16px;">Balance Due: $450</span></p>
+                </div>
+                <div class="group" >
+                    <button  class="btn group1">Dine In</button>
+                    <button  class="btn group2">To Go</button>
+                    <button  class="btn group3">Delivery</button>
+                </div>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cheesy Chicken Pasta<br><span>Amount $350</span></td>
+                            <td ><button class="btn" style="background-color: #5d4ce0;">2</button></td>
+                            <td>$700</td>
+                            <td style="color: green;">%</td>
+                        </tr>
+                        <tr>
+                            <td>Cheesy Chicken Pasta<br><span>Amount $140</span></td>
+                            <td><button  class="btn" style="background-color: #5d4ce0;">4</button></td>
+                            <td>$650</td>
+                            <td style="color: green;">%</td>
+                        </tr>
+                        <tr>
+                            <td>Cheesy Chicken Pasta<br><span>Amount $120</span></td>
+                            <td><button  class="btn" style="background-color: #5d4ce0;">6</button></td>
+                            <td>$350</td>
+                            <td style="color: green;">%</td>
+                        </tr>
+                        <tr>
+                            <td>Cheesy Chicken Pasta<br><span>Amount $150</span></td>
+                            <td><button  class="btn" style="background-color: #5d4ce0;">3</button></td>
+                            <td>$450</td>
+                            <td style="color: green;">%</td>
+                        </tr>
+                        <tr>
+                            <td>Cheesy Chicken Pasta<br><span>Amount $75</span></td>
+                            <td><button  class="btn" style="background-color: #5d4ce0;">5</button></td>
+                            <td>$600</td>
+                            <td style="color: green;">%</td>
+                        </tr>
+                        <tr>
+                            <td>Cheesy Chicken Pasta<br><span>Amount $225</span></td>
+                            <td><button  class="btn" style="background-color: #5d4ce0;">2</button></td>
+                            <td>$450</td>
+                            <td style="color: green;">%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="additional-info">
+                    <p>Add cooking instructions (Note)</p>
+                    <div class="container" style="width: 100%; margin-left: 0;">
+                    <div class="summary">
+                        <p>Sub Total: $1100</p>
+                        <p>Discount: $100</p>
+                        <p>Total Payment: $1000</p>
+                    </div>
+                     
+                    <div class="buttons1">
+                        <button class="btn " style="background-color: white;">Cancel</button>
+                       <div> <button class="btn" style="background-color: white;">Add Items</button></div>
+                        <button class="btn " style="background-color: white ;">Pay</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="pos.js"></script>
+</body>
+</html>
